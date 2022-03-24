@@ -1,9 +1,13 @@
 package com.gyj.myapplication2;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
@@ -51,4 +55,25 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //加载xml菜单资源
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu,menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.item_clear:
+                weight.setText("");
+                height.setText("");
+                Toast.makeText(MainActivity.this,"清空",Toast.LENGTH_SHORT).show();
+                return true;
+
+            default: return super.onOptionsItemSelected(item);
+
+        }
+    }
+
 }
